@@ -1,0 +1,9 @@
+# Build artifacts — the packaged extension (rebuilt from source)
+*.zip
+
+# Internal docs / notes — not for the public repo
+*.md
+!README.md
+
+# Local working notes
+todo
