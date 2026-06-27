@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X Bookmark Manager</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #e6ecf2;
+      background: linear-gradient(135deg, #15202b 0%, #1d2c3a 55%, #1d9bf0 220%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .wrap { max-width: 920px; width: 100%; }
+    .logo-row { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+    .badge {
+      width: 60px; height: 60px; border-radius: 15px; background: #1d9bf0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; font-weight: 800; color: #fff;
+    }
+    .name { font-size: 24px; font-weight: 700; }
+    h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.08; font-weight: 800; letter-spacing: -1px; margin-bottom: 18px; }
+    h1 .hl { color: #1d9bf0; }
+    .sub { font-size: 20px; color: #b8c5d0; line-height: 1.5; margin-bottom: 32px; max-width: 620px; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .feature { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px 20px; }
+    .feature .t { font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+    .feature .t .tick { color: #1d9bf0; }
+    .feature .d { color: #9fb0bd; font-size: 15px; line-height: 1.45; }
+    .shot { width: 100%; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,.4); margin-bottom: 36px; display: block; }
+    .links { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    a.btn { background: #1d9bf0; color: #fff; text-decoration: none; padding: 12px 22px; border-radius: 10px; font-weight: 600; }
+    a.plain { color: #9fb0bd; text-decoration: none; font-size: 15px; }
+    a.plain:hover { color: #1d9bf0; }
+    footer { margin-top: 40px; color: #6f8190; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo-row">
+      <div class="badge">XB</div>
+      <div class="name">X Bookmark Manager</div>
+    </div>
+
+    <h1>Save tweets into <span class="hl">your own</span> categories.</h1>
+    <p class="sub">A lightweight, private browser extension for organizing the tweets you care about — right-click to save, search instantly, and keep it all on your own device.</p>
+
+    <img class="shot" src="store-screenshot-1280x800.png" alt="X Bookmark Manager popup preview">
+
+    <div class="features">
+      <div class="feature">
+        <div class="t"><span class="tick">✓</span> Three ways to save</div>
+        <div class="d">Right-click a tweet, save the current tab, or paste a link.</div>
+      </div>
+      <div class="feature">
+        <div class="t"><span class="tick">✓</span> Your categories</div>
+        <div class="d">Organize saves into your own categories with instant search.</div>
+      </div>
+      <div class="feature">
+        <div class="t"><span class="tick">✓</span> 100% local</div>
+        <div class="d">No login, no tracking, no fees. Nothing leaves your browser.</div>
+      </div>
+      <div class="feature">
+        <div class="t"><span class="tick">✓</span> Backup &amp; restore</div>
+        <div class="d">Export and import your whole list as a JSON file.</div>
+      </div>
+    </div>
+
+    <div class="links">
+      <a class="btn" href="https://github.com/RibMc95/X-BM-manager">View on GitHub</a>
+      <a class="plain" href="privacy.html">Privacy Policy</a>
+    </div>
+
+    <footer>© 2026 X Bookmark Manager · A private, local-only browser extension.</footer>
+  </div>
+</body>
+</html>
