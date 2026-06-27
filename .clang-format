@@ -1,0 +1,17 @@
+# Match the hand style used in src/apu.cpp and src/timer.cpp:
+# Allman braces, 4-space indent, indented switch cases. ColumnLimit 0 keeps
+# existing line breaks so only brace placement / indentation is normalized.
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 0
+BreakBeforeBraces: Allman
+IndentCaseLabels: true
+AllowShortCaseLabelsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+PointerAlignment: Right
+SortIncludes: false
+FixNamespaceComments: false

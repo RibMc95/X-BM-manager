@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      width: 340px;
+      margin: 0;
+      padding: 12px;
+      font-family: -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+    }
+    h1 { font-size: 15px; margin: 0 0 10px; }
+    .row { display: flex; gap: 6px; margin-bottom: 6px; }
+    input, button { font: inherit; padding: 6px 8px; border-radius: 6px; border: 1px solid #ccc; }
+    input { flex: 1; min-width: 0; }
+    button { cursor: pointer; background: #1d9bf0; color: #fff; border: none; white-space: nowrap; }
+    button.secondary { background: #555; }
+    button.link { background: none; color: #888; padding: 2px 4px; }
+    .hint { color: #888; font-size: 12px; margin: 2px 0 10px; }
+    hr { border: none; border-top: 1px solid #ddd; margin: 12px 0; }
+    .cat-group { margin-bottom: 12px; }
+    .cat-title { font-weight: 600; margin-bottom: 4px; }
+    .item { display: flex; align-items: center; gap: 6px; padding: 3px 0; }
+    .item a { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #1d9bf0; text-decoration: none; }
+    .empty { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>X Bookmark Manager</h1>
+
+  <div class="row">
+    <input id="category" list="categories" placeholder="Category (optional)" />
+    <datalist id="categories"></datalist>
+  </div>
+  <div class="row">
+    <button id="saveTab">Save current tab</button>
+  </div>
+  <div class="row">
+    <input id="pasteUrl" placeholder="…or paste a tweet link" />
+    <button id="savePaste" class="secondary">Save</button>
+  </div>
+  <div class="hint">Tip: right-click any tweet on x.com to save it straight into a category.</div>
+
+  <hr>
+  <div class="row">
+    <input id="search" placeholder="Search saved tweets…" />
+  </div>
+  <div id="list"></div>
+
+  <hr>
+  <div class="row">
+    <button id="exportBtn" class="secondary">Export</button>
+    <button id="importBtn" class="secondary">Import</button>
+    <input id="importFile" type="file" accept="application/json,.json" hidden />
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
