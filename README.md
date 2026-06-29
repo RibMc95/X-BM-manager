@@ -57,4 +57,4 @@ Code style is enforced with [`clang-format`](.clang-format) (Allman braces, 4-sp
 
 ## License
 
-© 2026 X Bookmark Manager.
+Released under the [MIT License](LICENSE). © 2026 Micah Cole.
