@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — X Bookmark Manager (Firefox)</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { color: #e6e6e6; background: #1a1a2e; }
+      a { color: #ff9500; }
+    }
+    h1 { font-size: 28px; margin-bottom: 4px; }
+    .updated { color: #888; font-size: 14px; margin-bottom: 28px; }
+    h2 { font-size: 19px; margin-top: 28px; }
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+    code { background: rgba(127,127,127,.18); padding: 1px 5px; border-radius: 4px; font-size: 90%; }
+    footer { margin-top: 40px; font-size: 14px; color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <div class="updated">X Bookmark Manager (Firefox add-on) &middot; Last updated: June 28, 2026</div>
+
+  <p>
+    X Bookmark Manager is a Firefox add-on that lets you save links to tweets and
+    organize them into your own categories. This policy explains how it handles your
+    data. In short: <strong>the add-on collects no data, and everything stays on your
+    own device.</strong>
+  </p>
+
+  <h2>Data collection</h2>
+  <p>
+    This add-on does <strong>not collect, transmit, or share any data</strong>. It
+    declares <code>data_collection_permissions: { required: ["none"] }</code> in its
+    manifest, consistent with Mozilla's data-consent requirements.
+  </p>
+
+  <h2>What the add-on stores locally</h2>
+  <p>
+    When you save a tweet, the following is stored <strong>only on your own device</strong>
+    using Firefox's <code>storage.local</code> API:
+  </p>
+  <ul>
+    <li>The tweet's link (URL) that you chose to save</li>
+    <li>The category you assign to it</li>
+    <li>The date and time you saved it</li>
+  </ul>
+  <p>This data never leaves your browser and is never sent to the developer or any third party.</p>
+
+  <h2>What the add-on does <em>not</em> do</h2>
+  <ul>
+    <li><strong>No servers or network requests.</strong> The add-on makes no outbound connections of its own.</li>
+    <li><strong>No tracking.</strong> No analytics, cookies, advertising identifiers, or third-party services.</li>
+    <li><strong>No selling or sharing.</strong> Because nothing is collected, nothing is ever sold, transferred, or shared.</li>
+  </ul>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><code>activeTab</code> — reads the current tab's URL only when you click "Save current tab," so it can be saved.</li>
+    <li><code>storage</code> — saves your bookmark list locally on your device.</li>
+    <li><code>contextMenus</code> — adds the right-click "Save to X Bookmark Manager" menu on x.com and twitter.com.</li>
+  </ul>
+
+  <h2>Your control over your data</h2>
+  <p>
+    You can remove any saved item at any time from the add-on's popup, or export your
+    full list to a JSON file for your own backup. Removing the add-on deletes all of its
+    stored data from your device.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    If this policy changes, the "Last updated" date above will be revised. Material changes
+    will be reflected on the add-on's listing.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy? Email
+    <a href="mailto:micah.x.cole@gmail.com">micah.x.cole@gmail.com</a>.
+  </p>
+
+  <footer>This policy applies only to the X Bookmark Manager Firefox add-on.</footer>
+</body>
+</html>
