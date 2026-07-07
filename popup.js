@@ -18,11 +18,33 @@ function parseTweetId(url)
     return url.match(/status\/(\d+)/)?.[1] ?? null;
 }
 
+// Suggest a category from a link's host (GitHub / YouTube), or null if unrecognized.
+function classifyUrl(url)
+{
+    try
+    {
+        const host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+        if (host === "github.com" || host.endsWith(".github.com"))
+            return "GitHub";
+        if (host === "youtube.com" || host.endsWith(".youtube.com") || host === "youtu.be")
+            return "YouTube";
+    }
+    catch
+    {
+        // not a valid URL
+    }
+    return null;
+}
+
 async function addBookmark(url, category)
 {
     url = (url || "").trim();
     if (!url)
         return;
+    // If no category was chosen, auto-sort recognized links (e.g. a GitHub/YouTube link in a tweet).
+    let cat = (category || "").trim();
+    if (!cat)
+        cat = classifyUrl(url) || UNCATEGORIZED;
     const bookmarks = await getBookmarks();
     if (bookmarks.some((b) => b.url === url))
         return; // ignore duplicates
@@ -30,7 +52,7 @@ async function addBookmark(url, category)
         id : crypto.randomUUID(),
         url,
         tweetId : parseTweetId(url),
-        category : (category || "").trim() || UNCATEGORIZED,
+        category : cat,
         savedAt : Date.now(),
     });
     await setBookmarks(bookmarks);
@@ -120,7 +142,40 @@ document.getElementById("savePaste").addEventListener("click", async () => {
     const input = document.getElementById("pasteUrl");
     await addBookmark(input.value, document.getElementById("category").value);
     input.value = "";
+    updateSuggestion();
 });
+
+// Offer a category when a pasted link is recognized (and none is set yet).
+function updateSuggestion()
+{
+    const box = document.getElementById("suggestion");
+    const url = document.getElementById("pasteUrl").value.trim();
+    const detected = classifyUrl(url);
+    const hasCategory = document.getElementById("category").value.trim() !== "";
+    if (detected && !hasCategory)
+    {
+        document.getElementById("suggestText").textContent = `Detected ${detected} link — save under “${detected}”?`;
+        box.dataset.category = detected;
+        box.hidden = false;
+    }
+    else
+    {
+        box.hidden = true;
+    }
+}
+
+document.getElementById("suggestUse").addEventListener("click", () => {
+    document.getElementById("category").value = document.getElementById("suggestion").dataset.category || "";
+    document.getElementById("suggestion").hidden = true;
+});
+
+document.getElementById("suggestOther").addEventListener("click", () => {
+    document.getElementById("suggestion").hidden = true;
+    document.getElementById("category").focus(); // let the user type a new category
+});
+
+document.getElementById("pasteUrl").addEventListener("input", updateSuggestion);
+document.getElementById("category").addEventListener("input", updateSuggestion);
 
 document.getElementById("search").addEventListener("input", render);
 

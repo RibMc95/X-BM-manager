@@ -9,6 +9,24 @@ function parseTweetId(url)
     return url.match(/status\/(\d+)/)?.[1] ?? null;
 }
 
+// Suggest a category from a link's host (GitHub / YouTube), or null if unrecognized.
+function classifyUrl(url)
+{
+    try
+    {
+        const host = new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+        if (host === "github.com" || host.endsWith(".github.com"))
+            return "GitHub";
+        if (host === "youtube.com" || host.endsWith(".youtube.com") || host === "youtu.be")
+            return "YouTube";
+    }
+    catch
+    {
+        // not a valid URL
+    }
+    return null;
+}
+
 // Distinct categories currently in use, for building the menu submenu.
 async function getCategories()
 {
@@ -50,6 +68,9 @@ async function saveBookmark(url, category)
 {
     if (!url)
         return;
+    // Auto-sort recognized links (GitHub/YouTube) when no specific category was chosen.
+    if (!category || category === UNCATEGORIZED)
+        category = classifyUrl(url) || UNCATEGORIZED;
     const {bookmarks = []} = await chrome.storage.local.get("bookmarks");
 
     // Skip exact-URL duplicates so re-saving doesn't pile up entries.

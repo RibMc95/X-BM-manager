@@ -25,6 +25,10 @@
     .item { display: flex; align-items: center; gap: 6px; padding: 3px 0; }
     .item a { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #1d9bf0; text-decoration: none; }
     .empty { color: #888; }
+    .suggest { display: flex; align-items: center; gap: 6px; background: #eaf5fe; border: 1px solid #b6e0fb; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; font-size: 13px; color: #0f1419; }
+    .suggest span { flex: 1; }
+    button.mini { padding: 3px 8px; font-size: 12px; }
+    button.mini.alt { background: #5a6b76; }
   </style>
 </head>
 <body>
@@ -40,6 +44,11 @@
   <div class="row">
     <input id="pasteUrl" placeholder="…or paste a tweet link" />
     <button id="savePaste" class="secondary">Save</button>
+  </div>
+  <div id="suggestion" class="suggest" hidden>
+    <span id="suggestText"></span>
+    <button id="suggestUse" class="mini">Use</button>
+    <button id="suggestOther" class="mini alt" title="Type your own category">Another…</button>
   </div>
   <div class="hint">Tip: right-click any tweet on x.com to save it straight into a category.</div>
 
